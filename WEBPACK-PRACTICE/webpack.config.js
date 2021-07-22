@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   entry: "./index.js",
   output: {
-    filename: `bundle.[hash].js`, // hash contenthash chunkhash
+    filename: `[name].[chunkhash].js`, // hash contenthash chunkhash
     path: path.resolve(__dirname, "dist"),
   },
   mode: "none",
@@ -49,4 +49,18 @@ module.exports = {
     new MiniCssExtractPlugin({ filename: "[contenthash].css" }),
     new CleanWebpackPlugin(),
   ],
+  optimization: {
+    runtimeChunk: {
+      name: "runtime",
+    },
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "venders",
+          chunks: "all",
+        },
+      },
+    },
+  },
 };

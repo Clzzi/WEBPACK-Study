@@ -21,6 +21,7 @@
     "webpack-cli": "^4.7.2"
   },
   "dependencies": {
+    "jquery": "^3.6.0",
     "normalize.css": "^8.0.1"
   }
 }
