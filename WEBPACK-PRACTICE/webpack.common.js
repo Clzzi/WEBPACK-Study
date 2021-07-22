@@ -6,6 +6,8 @@ const webpack = require("webpack");
 
 const isProduction = process.env.NODE_ENV === "PRODUCTION";
 
+// data:mediatype; base64, data
+
 module.exports = {
   entry: "./src/index.js",
   output: {
@@ -48,6 +50,17 @@ module.exports = {
               },
               publicPath: "assets/",
               outputPath: "assets/",
+            },
+          },
+        ],
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192,
             },
           },
         ],
