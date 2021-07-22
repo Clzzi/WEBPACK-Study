@@ -2,6 +2,8 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const terserWebpackPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   entry: "./index.js",
@@ -45,9 +47,21 @@ module.exports = {
       meta: {
         viewport: "width=device-width, initial-scale=1.0",
       },
+      minify: {
+        collapseWhitespace: true,
+        useShortDoctype: true,
+        removeScriptTypeAttributes: true,
+      },
     }),
     new MiniCssExtractPlugin({ filename: "[contenthash].css" }),
     new CleanWebpackPlugin(),
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.css$/g,
+      cssProcessorPluginOptions: {
+        preset: ["default", { discardComments: { removeAll: true } }],
+      },
+      canPrint: true,
+    }),
   ],
   optimization: {
     runtimeChunk: {
@@ -62,5 +76,7 @@ module.exports = {
         },
       },
     },
+    minimize: true,
+    minimizer: [new terserWebpackPlugin()],
   },
 };
