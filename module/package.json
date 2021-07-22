@@ -1,0 +1,19 @@
+{
+  "name": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "esm": "^3.2.25"
+  },
+  "devDependencies": {
+    "webpack": "^5.45.1",
+    "webpack-cli": "^4.7.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
