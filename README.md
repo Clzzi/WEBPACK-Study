@@ -1,2 +1,2 @@
-# Stduy-WEBPACK
-FastCampus의 WEBPACK강의를 보고 공부한 내용을 기록하는 장소
+# WEBPACK study
+FastCampus의 WEBPACK강의 보고 코드를 커밋했습니다.
