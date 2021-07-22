@@ -3,6 +3,7 @@ import styles from "./index.module.css";
 import $ from "jquery";
 import ryan from "./assets/ryan.jpg";
 import github from "./assets/github.svg";
+import '@babel/polyfill';
 
 function component() {
   const el = document.createElement("div");

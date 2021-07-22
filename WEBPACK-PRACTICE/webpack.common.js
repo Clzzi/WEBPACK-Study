@@ -70,6 +70,11 @@ module.exports = {
         test: /\.hbs$/i,
         use: ["handlebars-loader"],
       },
+      {
+        test: /.js/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+      },
     ],
   },
   plugins: [
