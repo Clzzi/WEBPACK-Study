@@ -35,5 +35,10 @@
   "dependencies": {
     "jquery": "^3.6.0",
     "normalize.css": "^8.0.1"
-  }
+  },
+  "browserslist": [
+    "last 2 versions",
+    "IE 10",
+    "Firefox > 20"
+  ]
 }

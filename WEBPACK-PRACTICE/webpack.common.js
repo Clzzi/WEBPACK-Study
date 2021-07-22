@@ -6,8 +6,6 @@ const webpack = require("webpack");
 
 const isProduction = process.env.NODE_ENV === "PRODUCTION";
 
-// data:mediatype; base64, data
-
 module.exports = {
   entry: "./src/index.js",
   output: {
@@ -17,22 +15,25 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/i, // .css를 식별하는 정규 표현식
-        use: [
-          // {
-          //   loader: "style-loader",
-          //   options: {
-          //     injectType: "singletonStyleTag",
-          //   },
-          // },
+        test: /\.s?css$/,
+        oneOf: [
           {
-            loader: MiniCssExtractPlugin.loader,
+            test: /\.module\.s?css$/,
+            use: [
+              {
+                loader: MiniCssExtractPlugin.loader,
+              },
+              {
+                loader: "css-loader",
+                options: {
+                  modules: true,
+                },
+              },
+              "sass-loader",
+            ],
           },
           {
-            loader: "css-loader",
-            options: {
-              modules: true,
-            },
+            use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
           },
         ],
       },

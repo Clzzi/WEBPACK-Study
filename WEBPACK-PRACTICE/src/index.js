@@ -1,5 +1,5 @@
 import "normalize.css";
-import styles from "./index.css";
+import styles from "./index.module.css";
 import $ from "jquery";
 import ryan from "./assets/ryan.jpg";
 import github from "./assets/github.svg";
