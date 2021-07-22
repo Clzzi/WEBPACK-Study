@@ -7,7 +7,7 @@ const webpack = require("webpack");
 const isProduction = process.env.NODE_ENV === "PRODUCTION";
 
 module.exports = {
-  entry: "./index.js",
+  entry: "./src/index.js",
   output: {
     filename: `[name].[chunkhash].js`, // hash contenthash chunkhash
     path: path.resolve(__dirname, "dist"),
@@ -30,6 +30,24 @@ module.exports = {
             loader: "css-loader",
             options: {
               modules: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.{png|jpe?g|gif}$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name() {
+                if (!isProduction) {
+                  return "[path][name].[ext]";
+                }
+                return "[contenthash].[ext]";
+              },
+              publicPath: "assets/",
+              outputPath: "assets/",
             },
           },
         ],
